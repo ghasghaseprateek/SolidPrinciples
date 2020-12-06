@@ -20,3 +20,12 @@ No client should be forced to depend on methods it does not use.
 
 # DIP
 High level modules should not depend on low level modules but should depend on abstraction.
+
+# DRY: Don't Repeat Yourself
+-> DRY stand for "Don't Repeat Yourself," a basic principle of software development aimed at reducing repetition of information.
+-> To avoid violating the DRY principle, divide your system into pieces. Divide your code and logic into smaller reusable units and use that code by calling it where you want. Don't write lengthy methods, but divide logic and try to use the existing piece in your method.
+-> Less code is good: It saves time and effort, is easy to maintain, and also reduces the chances of bugs.
+
+# KISS: Keep It Simple, Stupid
+-> The KISS principle is descriptive to keep the code simple and clear, making it easy to understand.
+-> Whenever you find lengthy code, divide that into multiple methods — right-click and refactor in the editor. Try to write small blocks of code that do a single task.
