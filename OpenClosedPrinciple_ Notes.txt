@@ -1,0 +1,2 @@
+OCP: Open for extension and closed for modification
+Program to interface to acheive OCP

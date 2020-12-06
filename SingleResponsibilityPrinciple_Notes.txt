@@ -1,0 +1,1 @@
+SRP says that a class should have only one responsibility and not multiple.
