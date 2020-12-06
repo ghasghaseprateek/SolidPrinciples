@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SingleResponsibilityPrinciple_1.Correct
+namespace DependencyInversionPrinciple_1.Correct
 {
     public class FileLogger : ILogger
     {
         public void Error(Exception ex)
         {
-            Console.WriteLine(ex.ToString());
+            Console.WriteLine("Logging error to a file");
         }
     }
 }

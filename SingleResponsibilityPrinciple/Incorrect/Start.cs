@@ -10,8 +10,8 @@ namespace SingleResponsibilityPrinciple_1.Incorrect
         {
             Console.WriteLine("Incorrect");
             Console.WriteLine();
-            Customer incorrect_Customer = new Customer();
-            incorrect_Customer.Add();
+            Customer customer = new Customer();
+            customer.Add();
             Console.WriteLine();
             Console.WriteLine("This is not the right way because the logic for logging is in Customer class.");
             Console.WriteLine();

@@ -1,0 +1,99 @@
+DIP: delegated the dependent object creation to client
+
+#1
+
+-> Incorrect
+
+public class ConsoleLogger
+{
+    public void Error(Exception ex)
+    {
+        Console.WriteLine(ex.ToString());
+    }
+}
+
+public class Customer
+{
+    private ConsoleLogger _consoleLogger = new ConsoleLogger();
+
+    public void Add()
+    {
+        try
+        {
+            // Code to add customer to database
+            throw new Exception("Logging from the Incorrect_Customer - Incorrect way");
+        }
+        catch (Exception ex)
+        {
+            _consoleLogger.Error(ex);
+        }
+    }
+}
+
+public class Start
+{
+    static void Main()
+    {
+        Customer customer = new Customer();
+        customer.Add();
+    }
+}
+
+-> Correct
+
+public interface ILogger
+{
+    void Error(Exception ex);
+}
+
+public class ConsoleLogger : ILogger
+{
+    public void Error(Exception ex)
+    {
+        Console.WriteLine(ex.ToString());
+    }
+}   
+
+public class FileLogger : ILogger
+{
+    public void Error(Exception ex)
+    {
+        Console.WriteLine("Logging error to a file");
+    }
+}
+
+public class Customer
+{
+    private ILogger _logger;
+
+    public Customer(ILogger logger)
+    {
+        _logger = logger;
+    }
+
+    public void Add()
+    {
+        try
+        {
+            // Code to add customer to database
+            throw new Exception("Logging from the Logger - Correct way");
+        }
+        catch (Exception ex)
+        {
+            // Calling logger to log
+            _logger.Error(ex);
+        }
+    }
+}
+
+class Start
+{
+    static void Main()
+    {
+        Customer customer1 = new Customer(new ConsoleLogger());
+        customer1.Add();
+
+        Customer customer2 = new Customer(new FileLogger());
+        customer2.Add();
+    }
+}

@@ -17,3 +17,6 @@ The parent should easily replace the child object
 
 # ISP
 No client should be forced to depend on methods it does not use.
+
+# DIP
+High level modules should not depend on low level modules but should depend on abstraction.

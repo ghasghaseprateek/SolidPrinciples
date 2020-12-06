@@ -34,7 +34,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InterfaceSegregationPrincip
 		InterfaceSegregationPrinciple_Notes.txt = InterfaceSegregationPrinciple_Notes.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceSegregationPrinciple_1", "InterfaceSegregationPrinciple_1\InterfaceSegregationPrinciple_1.csproj", "{52EDAB23-D5A6-442E-88FB-ED9B5A7E9142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterfaceSegregationPrinciple_1", "InterfaceSegregationPrinciple_1\InterfaceSegregationPrinciple_1.csproj", "{52EDAB23-D5A6-442E-88FB-ED9B5A7E9142}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyInversionPrinciple_DIP", "DependencyInversionPrinciple_DIP", "{16ADF812-D6FF-4926-AE17-077D09C668D6}"
+	ProjectSection(SolutionItems) = preProject
+		DependencyInversionPrinciple_Notes.txt = DependencyInversionPrinciple_Notes.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInversionPrinciple_1", "DependencyInversionPrinciple_1\DependencyInversionPrinciple_1.csproj", "{9D3B6529-025D-43B2-8BCC-2552C320C34C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +65,10 @@ Global
 		{52EDAB23-D5A6-442E-88FB-ED9B5A7E9142}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52EDAB23-D5A6-442E-88FB-ED9B5A7E9142}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52EDAB23-D5A6-442E-88FB-ED9B5A7E9142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D3B6529-025D-43B2-8BCC-2552C320C34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D3B6529-025D-43B2-8BCC-2552C320C34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D3B6529-025D-43B2-8BCC-2552C320C34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D3B6529-025D-43B2-8BCC-2552C320C34C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +78,7 @@ Global
 		{B2D43AA6-AC5A-402F-A52B-170CA705FD06} = {25FF92BF-4A67-402F-8B5A-873673F0F8A0}
 		{873559B2-5832-44A9-8EC8-340F213D4040} = {C44294E6-DDE4-45ED-BA77-54C30D15C547}
 		{52EDAB23-D5A6-442E-88FB-ED9B5A7E9142} = {1E8E0243-3A1F-48A5-BC89-E2CA04E31E69}
+		{9D3B6529-025D-43B2-8BCC-2552C320C34C} = {16ADF812-D6FF-4926-AE17-077D09C668D6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6025D3BC-7C4B-4F31-B62F-4093F8641A8E}

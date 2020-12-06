@@ -10,8 +10,8 @@ namespace SingleResponsibilityPrinciple_1.Correct
         {
             Console.WriteLine("Correct");
             Console.WriteLine();
-            Customer correct_Customer = new Customer(new FileLogger());
-            correct_Customer.Add();
+            Customer customer = new Customer(new ConsoleLogger());
+            customer.Add();
             Console.WriteLine();
             Console.WriteLine("This is the right way because the logic for logging is moved to a new class(Logger) and the customer class only contains logic for adding a new customer.");
             Console.WriteLine();
