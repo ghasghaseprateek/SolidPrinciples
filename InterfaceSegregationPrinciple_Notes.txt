@@ -1,0 +1,64 @@
+ISP states that no client should be forced to depend on methods it does not use.
+
+#1
+
+-> Incorrect
+
+interface ICustomer
+{
+    // Thousands of client are using only Add method and don't need Get
+    void Add();
+
+    // By adding Get method in this interface we are forcing all the clients to implement this method
+    List<string> GetUsernames();
+}
+
+class Customer : ICustomer
+{
+    public void Add()
+    {
+        Console.WriteLine("Adding customer to database");
+    }
+
+    // Forcing all clients to implement Get customers even though they don't need it
+    // because we have modified the interface with declaration of get customers
+    public List<string> GetUsernames()
+    {
+        Console.WriteLine("Fetching customers");
+        return new List<string>();
+    }
+}
+
+-> Correct
+
+interface ICustomer
+{
+    void Add();
+}
+
+interface ICustomerRead : ICustomer
+{
+    List<string> GetUsernames();
+}
+
+class Customer : ICustomer
+{
+    public void Add()
+    {
+        Console.WriteLine("Adding customer to database");
+    }
+}
+
+class CustomerRead : ICustomer, ICustomerRead
+{
+    public void Add()
+    {
+        Console.WriteLine("Adding customer to database");
+    }
+
+    public List<string> GetUsernames()
+    {
+        Console.WriteLine("Fetching customers");
+        return new List<string>();
+    }
+}
