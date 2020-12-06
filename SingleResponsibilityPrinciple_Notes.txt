@@ -1,1 +1,59 @@
 SRP says that a class should have only one responsibility and not multiple.
+
+#1 
+
+-> Incorrect 
+
+class Customer
+{
+    public void Add()
+    {
+        try
+        {
+            // Database code goes here
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+    }
+}
+
+-> Correct
+
+public interface ILogger
+{
+    void Error(Exception ex);
+}
+
+public class FileLogger : ILogger
+{
+    public void Error(Exception ex)
+    {
+        Console.WriteLine(ex.ToString());
+    }
+}
+
+class Customer
+{
+    private ILogger _logger;
+
+    public Correct_Customer(ILogger logger)
+    {
+        _logger = logger;
+    }
+
+    public void Add()
+    {
+        try
+        {
+            // Code to add customer to database
+            throw new Exception("Logging from the Logger - Correct way");
+        }
+        catch (Exception ex)
+        {
+            // Calling logger to log
+            _logger.Error(ex);
+        }
+    }
+}

@@ -1,0 +1,139 @@
+LISKOV principle says the parent should easily replace the child object
+
+#1
+
+-> Incorrect
+
+public interface ICustomer
+{
+    double GetDiscount(double totalSales);
+    void Add();
+}
+
+public class GoldCustomer : ICustomer
+{
+    public void Add()
+    {
+        Console.WriteLine("Adding new GOLD customer");
+    }
+
+    public double GetDiscount(double totalSales)
+    {
+        return totalSales - 100;
+    }
+}
+
+class SilverCustomer : ICustomer
+{
+    public void Add()
+    {
+        Console.WriteLine("Adding new SILVER customer");
+    }
+
+    public double GetDiscount(double totalSales)
+    {
+        return totalSales - 50;
+    }
+}
+
+class EnquiryCustomer : ICustomer
+{
+    public void Add()
+    {
+        // Enqiry customer is a lead. Thus cannot be added to customer.
+        throw new NotImplementedException("Enquiry customer is a lead. Thus cannot be added to customer");
+    }
+
+    public double GetDiscount(double totalSales)
+    {
+        return totalSales - 50;
+    }
+}
+
+static void Main()
+{
+    List<ICustomer> customers = new List<ICustomer>();
+    customers.Add(new SilverCustomer());
+    customers.Add(new GoldCustomer());
+    customers.Add(new EnquiryCustomer());
+
+    foreach (ICustomer o in customers)
+    {
+        var discount = o.GetDiscount(totalSales);
+
+        // This will throw an exception for Enquiry.
+        o.Add();
+    }
+}
+
+-> Correct
+
+internal interface IDiscountCandidates
+{
+    double GetDiscount(double totalSales);
+}
+
+internal interface ICustomer : IDiscountCandidates
+{
+    void Add();
+}
+
+public class GoldCustomer : ICustomer
+{
+    public void Add()
+    {
+        Console.WriteLine("Adding new GOLD customer");
+    }
+
+    public double GetDiscount(double totalSales)
+    {
+        return totalSales - 100;
+    }
+}
+
+class SilverCustomer : ICustomer
+{
+    public void Add()
+    {
+        Console.WriteLine("Adding new SILVER customer");
+    }
+
+    public double GetDiscount(double totalSales)
+    {
+        return totalSales - 50;
+    }
+}
+
+class EnquiryLead : IDiscountCandidates
+{
+    public double GetDiscount(double totalSales)
+    {
+        return totalSales - 50;
+    }
+}
+
+static void Main()
+{
+    List<ICustomer> customers = new List<ICustomer>();
+    customers.Add(new SilverCustomer());
+    customers.Add(new GoldCustomer());
+    Console.WriteLine("Compilation error for EnquiryCustomer as it is not a customer");
+    //Customers.Add(new EnquiryCustomer());
+
+    foreach (ICustomer o in customers)
+    {
+        o.Add();
+    }
+
+    Console.WriteLine();
+    List<IDiscountCandidates> discountCandidates = new List<IDiscountCandidates>();
+    discountCandidates.Add(new SilverCustomer());
+    discountCandidates.Add(new GoldCustomer());
+    discountCandidates.Add(new EnquiryLead());
+
+    foreach (IDiscountCandidates o in discountCandidates)
+    {
+        var discount = o.GetDiscount(totalSales);
+        Console.WriteLine($"Discount: {discount}");
+    }
+}

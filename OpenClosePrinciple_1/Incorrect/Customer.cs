@@ -2,7 +2,7 @@
 
 namespace OpenClosePrinciple_1.Incorrect
 {
-    public class Incorrect_Customer
+    public class Customer
     {
         public CustomerType Type { get; set; }
 

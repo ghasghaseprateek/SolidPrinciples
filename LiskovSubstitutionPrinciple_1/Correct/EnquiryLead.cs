@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OpenClosePrinciple_1.Correct
+namespace LiskovSubstitutionPrinciple_1.Correct
 {
-    class SilverCustomer : ICustomer
+    class EnquiryLead : IDiscountCandidates
     {
         public double GetDiscount(double totalSales)
         {

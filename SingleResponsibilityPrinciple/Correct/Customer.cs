@@ -4,11 +4,11 @@ using System.Text;
 
 namespace SingleResponsibilityPrinciple_1.Correct
 {
-    public class Correct_Customer
+    public class Customer
     {
         private ILogger _logger;
 
-        public Correct_Customer(ILogger logger)
+        public Customer(ILogger logger)
         {
             _logger = logger;
         }

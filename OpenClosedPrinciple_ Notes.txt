@@ -1,2 +1,75 @@
 OCP: Open for extension and closed for modification
 Program to interface to acheive OCP
+
+#1
+
+-> Incorrect
+
+public class Customer
+{
+    public CustomerType Type { get; set; }
+
+    public double GetDiscount(double totalSales)
+    {
+        if (Type == CustomerType.Gold)
+        {
+            return totalSales - 100;
+        }
+        else
+        {
+            return totalSales - 50;
+        }
+    }
+}
+
+-> Correct
+
+public enum CustomerType
+{
+    Gold,
+    Silver
+}
+
+public interface ICustomer
+{
+    double GetDiscount(double totalSales);
+}
+
+public class GoldCustomer : ICustomer
+{
+    public double GetDiscount(double totalSales)
+    {
+        return totalSales - 100;
+    }
+}
+
+class SilverCustomer : ICustomer
+{
+    public double GetDiscount(double totalSales)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+class Program
+{
+    private const int _totalSales = 500;
+    private const CustomerType _customerType = CustomerType.Gold;
+
+    static void Main(string[] args)
+    {
+        ICustomer correct_Customer;
+        switch (_customerType)
+        {
+            case CustomerType.Gold:
+                correct_Customer = new GoldCustomer();
+                break;
+            case CustomerType.Silver:
+                correct_Customer = new SilverCustomer();
+                break;
+            default:
+                break;
+        }
+        correct_Customer.GetDiscount(_totalSales);
+    }
+}

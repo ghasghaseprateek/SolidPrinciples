@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SingleResponsibilityPrinciple_1.Incorrect
 {
-    public class Incorrect_Customer
+    public class Customer
     {
         public void Add()
         {
